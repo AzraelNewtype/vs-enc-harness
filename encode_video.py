@@ -41,7 +41,8 @@ def load_settings(series):
     return settings
 
 def fix_windows_paths(path_in):
-    return re.sub(r'\\', '/', path_in)
+    if path_in:
+        return re.sub(r'\\', '/', path_in)
 
 def get_vid_info(settings):
     type = settings['type']
@@ -136,12 +137,12 @@ if __name__ == "__main__":
     # shlex.split posix=False doesn't really work for some reason
     # this is easier
     if os.name == 'posix':
-        settings['subs'] = Opts.subs
-        settings['qpfile'] = Opts.qpfile
+        settings['subs'] = Opts.subs 
+        settings['qpfile'] = Opts.qpfile 
         settings['script_in'] = Opts.script_in
         settings['vid_in'] = Opts.vid_in
     elif os.name == 'nt':
-        settings['subs'] = fix_windows_paths(Opts.subs)
+        settings['subs'] = fix_windows_paths(Opts.subs) 
         settings['qpfile'] = fix_windows_paths(Opts.qpfile)
         settings['script_in'] = fix_windows_paths(Opts.script_in)
         settings['vid_in'] = fix_windows_paths(Opts.vid_in)
