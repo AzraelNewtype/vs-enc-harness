@@ -9,14 +9,11 @@ import subprocess
 import sys
 import tempfile
 
-def die(msg="The programmer neglected to explain why he's crashing the program here."):
-    print(msg)
-    raise SystemExit
 
 try:
     import yaml
 except ImportError:
-    die("You need to install PyYaml for this to work.")
+    sys.exit("You need to install PyYaml for this to work.")
 
 
 class Opts(object):
@@ -30,7 +27,7 @@ def load_settings(series):
         with open(yaml_loc) as y:
             all_settings = yaml.load(y)
     except IOError:
-        die("Cannot load encoder.yaml, cannot continue.")
+        sys.exit("Cannot load encoder.yaml, cannot continue.")
 
     settings = all_settings['Global']
     try:
@@ -83,7 +80,7 @@ def get_vid_info(settings, ep_num, mode):
             os.unlink(tempYUV)
             return [m.group(1), m.group(2), m.group(3), m.group(4)]
     os.unlink(tempYUV)
-    die('Error: Could not count number of frames.')
+    sys.exit('Error: Could not count number of frames.')
 
 
 def encode_sd(settings, ep_num, group):
@@ -135,7 +132,7 @@ def encode_sd(settings, ep_num, group):
     cmd = '{0} {2} {4} {5} {3} -o "{1}"'.format(encoder_source, out_name,
                                                 settings["sd_opts"].strip(),
                                                 chaps, qp_str, audio_str)
-    #die(cmd)
+    #sys.exit(cmd)
     split_and_blind_call(cmd, False, shell)
 
 
@@ -236,6 +233,6 @@ if __name__ == "__main__":
             prefix = settings["sd_prefix"]
         encode_sd(settings, epnum, prefix)
     elif Opts.enc_type == "fhd":
-        die("Congratulations, you've specified a valid mode with no corresponding code.")
+        sys.exit("Congratulations, you've specified a valid mode with no corresponding code.")
     else:
-        die("You specified an invalid encode type. The options are 'wr', 'hd', 'fhd', or 'sd'.")
+        sys.exit("You specified an invalid encode type. The options are 'wr', 'hd', 'fhd', or 'sd'.")
