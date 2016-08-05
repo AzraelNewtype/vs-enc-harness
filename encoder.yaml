@@ -1,0 +1,84 @@
+Global:
+    vspipe: C:/enc_tools/vspipe64.exe
+    x264_8: C:/enc_tools/x264.2705kMod.x86_64.exe
+    x264_10: C:/enc_tools/x264.2705kMod.10bit.x86_64.exe
+    l-smash_bin_path: C:/enc_tools
+    x264_extra_params: --preset veryfast --subme 1 --tune fastdecode
+    mkvmerge: C:/Program Files/MKVtoolnix/mkvmerge.exe
+Series:
+    Default:
+        lossless_depth_in: 10
+        lossless_depth_out: 10
+        hd_depth_in: 10
+        hd_depth_out: 10
+        sd_depth_in: 8
+        sd_depth_out: 8
+        wr_prefix: zyuoh
+        hd_prefix: THISFILEHASNOSUBS
+        sd_prefix: Over-Time
+        full_name: Default
+        default_opts: >
+            --preset veryslow --crf 18
+    
+    zyuoh:
+        lossless_depth_in: 10
+        lossless_depth_out: 10
+        hd_depth_in: 10
+        hd_depth_out: 10
+        sd_depth_in: 8
+        sd_depth_out: 8
+        sd_requires_subs: yes
+        wr_prefix: zyuoh
+        hd_prefix: THISFILEHASNOSUBS
+        sd_prefix: Over-Time
+        full_name: Animal Sentai Zyuohger
+        hd_opts: >
+            --preset veryslow --tune film --crf 23.0 --keyint 240 --colormatrix bt709 
+            --partitions p8x8,b8x8,i8x8,i4x4 --thread-input --ref 10 
+            --colorprim bt709
+        wr_opts: >
+            --profile main --preset ultrafast --tune film,fastdecode --level 3.1 
+            --vbv-bufsize 8000 --vbv-maxrate 8000 --keyint 240 
+            --crf 38 --colormatrix bt709 --partitions p8x8,b8x8,i8x8,i4x4
+            --thread-input --colorprim bt709
+        sd_opts: >
+            --profile main --level 3 --preset veryslow --crf 23.5 --keyint 240 
+            --vbv-bufsize 8000 --vbv-maxrate 8000 --partitions p8x8,b8x8,i8x8,i4x4 
+            --tune film,fastdecode --colormatrix bt470bg --thread-input --ref 5
+            --min-keyint 24 --colorprim bt709
+        fonts: 
+            - C:/Users/chris/Dropbox/Over-Time/Fonts/Zyuohger/ahronbd_0.ttf
+            - C:/Users/chris/Dropbox/Over-Time/Fonts/Zyuohger/nevis.ttf
+            - C:/Users/chris/Dropbox/Over-Time/Fonts/Zyuohger/rexlia free.ttf
+            - C:/Users/chris/Dropbox/Over-Time/Fonts/Zyuohger/Roboto-Bold.ttf
+            - C:/Users/chris/Dropbox/Over-Time/Fonts/Zyuohger/Roboto-BoldItalic.ttf
+            - C:/Users/chris/Dropbox/Over-Time/Fonts/Zyuohger/Stilu-Bold.otf
+            - C:/Users/chris/Dropbox/Over-Time/Fonts/Zyuohger/Stilu-BoldOblique.otf
+    makaretsu:
+        lossless_depth_in: 10
+        lossless_depth_out: 10
+        hd_depth_in: 10
+        hd_depth_out: 10
+        sd_depth_in: 8
+        sd_depth_out: 8
+        wr_prefix: makaretsu
+        hd_prefix: THISFILEHASNOSUBS
+        sd_prefix: Over-Time
+        full_name: GARO - Makai Tales
+        hd_opts: >
+            --preset veryslow --tune film --crf 22.2 --keyint 240 --colormatrix bt709 
+            --partitions p8x8,b8x8,i8x8,i4x4 --thread-input --ref 10 
+        wr_opts: >
+            --profile main --preset ultrafast --tune film,fastdecode --level 3.1 
+            --vbv-bufsize 8000 --vbv-maxrate 8000 --keyint 240 
+            --crf 38 --colormatrix bt709 --partitions p8x8,b8x8,i8x8,i4x4
+            --thread-input
+        sd_opts: >
+            --profile main --level 3 --preset veryslow --crf 21.5 --keyint 240 
+            --vbv-bufsize 8000 --vbv-maxrate 8000 --partitions p8x8,b8x8,i8x8,i4x4 
+            --tune film,fastdecode --colormatrix bt470bg --thread-input --ref 5
+            --min-keyint 24 
+        fonts: 
+            - C:/Users/chris/Dropbox/Over-Time/Fonts/goldstorm/Candarab.ttf
+            - C:/Users/chris/Dropbox/Over-Time/Fonts/goldstorm/ebrimabd.ttf
+            - C:/Users/chris/Dropbox/Over-Time/Fonts/goldstorm/Brush Strokes.ttf
