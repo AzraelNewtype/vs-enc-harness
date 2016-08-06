@@ -43,6 +43,9 @@ def load_settings(series):
 def fix_windows_paths(path_in):
     if path_in:
         return re.sub(r'\\', '/', path_in)
+        
+def display_windows_paths(cmd_in):
+    return re.sub('/', r'\\', cmd_in)
 
 def get_vid_info(settings):
     type = settings['type']
@@ -81,8 +84,18 @@ def encode_video(settings):
         encoder, enc_opts, settings['vid_out'], frame_info['Frames'])
     if settings['qpfile']:
         enc_cmd += ' --qpfile {}'.format(settings['qpfile'])
-    #preprin(settings)
-    sys.exit("{} | {}".format(pipe_cmd, enc_cmd))
+    if settings['pretend']:
+        print('=== Generated Command ===')
+        print('{} | {}'.format(
+            display_windows_paths(pipe_cmd), 
+            display_windows_paths(enc_cmd)))
+    else:
+        vsp = subprocess.Popen(shlex.split(pipe_cmd), stdout=subprocess.PIPE, 
+                               stderr=subprocess.DEVNULL)
+        enc = subprocess.Popen(shlex.split(enc_cmd), stdin=vsp.stdout)
+        vsp.stdout.close()
+        enc.communicate()
+
     
 
     
@@ -115,13 +128,15 @@ if __name__ == "__main__":
     parser.add_argument('--version', action='version', version='0.0001')
     parser.add_argument('-s', '--subtitles', dest="subs", help="Filename of ass script.")
     parser.add_argument('-c', '--tcfile', dest="tc", help="External timecodes file for HD/SD encodes.")
-    parser.add_argument('-o', '--ouput', dest='vid_out', help="Filename to encode to.")
     parser.add_argument('-q', '--qpfile', dest='qpfile', help='QPFile to use.')
+    parser.add_argument('-o', '--ouput', dest='vid_out', help="Filename to encode to.")
+    parser.add_argument('--pretend', action='store_true', default=False)
     args = parser.parse_args(namespace=Opts)
-
+    
     # Grab the settings from the yaml based on input
     settings = load_settings(Opts.series)
-
+    
+    settings['pretend'] = Opts.pretend
     settings['tc'] = Opts.tc
     settings['type'] = Opts.enc_type
     
