@@ -21,11 +21,8 @@ Series:
             --preset veryslow --crf 18
     
     zyuoh:
-        lossless_depth_in: 10
         lossless_depth_out: 10
-        hd_depth_in: 10
         hd_depth_out: 10
-        sd_depth_in: 8
         sd_depth_out: 8
         sd_requires_subs: yes
         wr_prefix: zyuoh
@@ -33,19 +30,17 @@ Series:
         sd_prefix: Over-Time
         full_name: Animal Sentai Zyuohger
         hd_opts: >
-            --preset veryslow --tune film --crf 23.0 --keyint 240 --colormatrix bt709 
-            --partitions p8x8,b8x8,i8x8,i4x4 --thread-input --ref 10 
-            --colorprim bt709
+            --preset veryslow --tune film --crf 23.0 --keyint 240 --colormatrix bt709
+            --partitions p8x8,b8x8,i8x8,i4x4 --ref 10 --colorprim bt709
         wr_opts: >
-            --profile main --preset ultrafast --tune film,fastdecode --level 3.1 
-            --vbv-bufsize 8000 --vbv-maxrate 8000 --keyint 240 
-            --crf 38 --colormatrix bt709 --partitions p8x8,b8x8,i8x8,i4x4
-            --thread-input --colorprim bt709
+            --profile main --preset ultrafast --tune film,fastdecode --level 3.1
+            --vbv-bufsize 8000 --vbv-maxrate 8000 --keyint 240 --crf 38
+            --colormatrix bt709 --colorprim bt709 --partitions p8x8,b8x8,i8x8,i4x4
         sd_opts: >
-            --profile main --level 3 --preset veryslow --crf 23.5 --keyint 240 
-            --vbv-bufsize 8000 --vbv-maxrate 8000 --partitions p8x8,b8x8,i8x8,i4x4 
-            --tune film,fastdecode --colormatrix bt470bg --thread-input --ref 5
-            --min-keyint 24 --colorprim bt709
+            --profile main --level 3 --preset veryslow --crf 23.5 --keyint 240
+            --vbv-bufsize 8000 --vbv-maxrate 8000 --partitions p8x8,b8x8,i8x8,i4x4
+            --tune film,fastdecode --colormatrix bt470bg --colorprim bt709 --ref 5
+            --min-keyint 24
         fonts: 
             - C:/Users/chris/Dropbox/Over-Time/Fonts/Zyuohger/ahronbd_0.ttf
             - C:/Users/chris/Dropbox/Over-Time/Fonts/Zyuohger/nevis.ttf
