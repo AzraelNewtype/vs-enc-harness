@@ -19,16 +19,20 @@ Series:
         full_name: Default
         default_opts: >
             --preset veryslow --crf 18
-    
     zyuoh:
         lossless_depth_out: 10
         hd_depth_out: 10
+        hd_requires_source: yes
         sd_depth_out: 8
+        sd_requires_source: yes
         sd_requires_subs: yes
+        wr_requires_source: yes
         wr_prefix: zyuoh
         hd_prefix: THISFILEHASNOSUBS
         sd_prefix: Over-Time
         full_name: Animal Sentai Zyuohger
+        lossless_opts: >
+            --preset ultrafast --subme 1 --tune fastdecode --qp 0
         hd_opts: >
             --preset veryslow --tune film --crf 23.0 --keyint 240 --colormatrix bt709
             --partitions p8x8,b8x8,i8x8,i4x4 --ref 10 --colorprim bt709
