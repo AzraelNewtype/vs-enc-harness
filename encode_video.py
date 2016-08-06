@@ -7,8 +7,7 @@ import re
 import shlex
 import subprocess
 import sys
-import tempfile
-
+import videoutilities as vu
 
 try:
     import yaml
@@ -109,13 +108,6 @@ def split_and_blind_call(cmd, is_python=False, is_shell=False):
         args.insert(0, sys.executable)
     f = subprocess.Popen(args, shell=is_shell)
     f.wait()
-
-
-def preprin(foo):
-    """Debug printing. It's not worth importing always, and lazier to type as needed."""
-    import pprint
-    pp = pprint.PrettyPrinter(indent=4)
-    pp.pprint(foo)
 
 
 if __name__ == "__main__":
