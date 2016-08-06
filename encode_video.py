@@ -68,8 +68,9 @@ def get_vid_info(settings):
 
 def encode_video(settings):
     type = settings['type']
-    pipe_cmd = "{0} -y -a 'type={1}' -a 'src_vid={2}'".format(
-        settings['vspipe'], type, settings['vid_in'])
+    pipe_cmd = "{0} -y -a 'type={1}'".format(settings['vspipe'], type)
+    if settings['vid_in']:
+        pipe_cmd += ' -a "src_vid={}"'.format(settings['vid_in'])
     if settings['subs']:
         pipe_cmd += ' -a "subtitles={0}"'.format(settings['subs'])
     pipe_cmd += ' {0} -'.format(settings['script_in'])
@@ -121,9 +122,9 @@ if __name__ == "__main__":
     # Build the menu.
     parser = argparse.ArgumentParser(description="Commands to automate the crap out of encoding")
     parser.add_argument('series', help="Series name, corresponding to series top level in encoder.yaml")
-    parser.add_argument('vid_in', help="Lossless video filename")
     parser.add_argument('script_in', help="Name of vpy script with final processing commands")
     parser.add_argument('enc_type', help="Which set of encoder commands to run?")
+    parser.add_argument('-i', '--source-video', dest='vid_in', help="Lossless video filename")
     parser.add_argument('-d', '--depth', dest='enc_depth', type=int, choices=[8,10], help="Use standard x264 or x264-10bit?")
     parser.add_argument('--version', action='version', version='0.0001')
     parser.add_argument('-s', '--subtitles', dest="subs", help="Filename of ass script.")
@@ -149,6 +150,12 @@ if __name__ == "__main__":
     except KeyError:
         pass
 
+    try:
+        if settings[settings['type'] + '_requires_source'] and not Opts.vid_in:
+            sys.exit("This encode type requires a source video that you haven't provided")
+    except KeyError:
+        pass
+    
     # shlex.split posix=False doesn't really work for some reason
     # this is easier
     if os.name == 'posix':
