@@ -23,9 +23,14 @@ Series:
         lossless_depth_out: 10
         hd_depth_out: 10
         hd_requires_source: yes
+        hd_mux_fonts: yes
+        hd_video_lang: jpn
+        hd_audio_lang: jpn
         sd_depth_out: 8
         sd_requires_source: yes
         sd_requires_subs: yes
+        sd_video_lang: eng
+        sd_audio_lang: jpn
         wr_requires_source: yes
         wr_prefix: zyuoh
         hd_prefix: THISFILEHASNOSUBS
