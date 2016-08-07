@@ -1,4 +1,5 @@
 import os
+import re
 import shlex
 import subprocess
 import sys
@@ -48,3 +49,7 @@ def get_vid_info(settings):
         if len(parts) > 1:
             finfo[parts[0]] = parts[1]
     return finfo
+
+def fix_windows_paths(path_in):
+    if path_in:
+        return re.sub(r'\\', '/', path_in)
