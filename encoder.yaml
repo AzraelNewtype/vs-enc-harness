@@ -2,7 +2,7 @@ Global:
     vspipe: C:/enc_tools/vspipe64.exe
     x264_8: C:/enc_tools/x264.2705kMod.x86_64.exe
     x264_10: C:/enc_tools/x264.2705kMod.10bit.x86_64.exe
-    l-smash_bin_path: C:/enc_tools
+    l-smash_bin_path: C:/enc_tools/l-smash-2.10.0-rev1366-d5c54a9-x86_64
     x264_extra_params: --preset veryfast --subme 1 --tune fastdecode
     mkvmerge: C:/Program Files/MKVtoolnix/mkvmerge.exe
 Series:
@@ -32,7 +32,7 @@ Series:
         sd_video_lang: eng
         sd_audio_lang: jpn
         wr_requires_source: yes
-        wr_prefix: zyuoh
+        wr_prefix: WorkRaw
         hd_prefix: THISFILEHASNOSUBS
         sd_prefix: Over-Time
         full_name: Animal Sentai Zyuohger
