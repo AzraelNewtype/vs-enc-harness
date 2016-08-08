@@ -5,6 +5,7 @@ Global:
     l-smash_bin_path: C:/enc_tools/l-smash-2.10.0-rev1366-d5c54a9-x86_64
     x264_extra_params: --preset veryfast --subme 1 --tune fastdecode
     mkvmerge: C:/Program Files/MKVtoolnix/mkvmerge.exe
+    mkvextract: C:/Program Files/MKVtoolnix/mkvextract.exe
 Series:
     Default:
         lossless_depth_in: 10
@@ -35,6 +36,7 @@ Series:
         wr_prefix: WorkRaw
         hd_prefix: THISFILEHASNOSUBS
         sd_prefix: Over-Time
+        sd_suffix: SD
         full_name: Animal Sentai Zyuohger
         lossless_opts: >
             --preset ultrafast --subme 1 --tune fastdecode --qp 0
