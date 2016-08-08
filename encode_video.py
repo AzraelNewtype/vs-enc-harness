@@ -13,11 +13,7 @@ import videoutilities as vu
 class Opts(object):
     pass
 
-    
-def fix_windows_paths(path_in):
-    if path_in:
-        return re.sub(r'\\', '/', path_in)
-        
+          
 def display_windows_paths(cmd_in):
     return re.sub('/', r'\\', cmd_in)
 
@@ -117,10 +113,10 @@ if __name__ == "__main__":
         settings['script_in'] = Opts.script_in
         settings['vid_in'] = Opts.vid_in
     elif os.name == 'nt':
-        settings['subs'] = fix_windows_paths(Opts.subs) 
-        settings['qpfile'] = fix_windows_paths(Opts.qpfile)
-        settings['script_in'] = fix_windows_paths(Opts.script_in)
-        settings['vid_in'] = fix_windows_paths(Opts.vid_in)
+        settings['subs'] = vu.fix_windows_paths(Opts.subs) 
+        settings['qpfile'] = vu.fix_windows_paths(Opts.qpfile)
+        settings['script_in'] = vu.fix_windows_paths(Opts.script_in)
+        settings['vid_in'] = vu.fix_windows_paths(Opts.vid_in)
 
         
     if not Opts.vid_out:
