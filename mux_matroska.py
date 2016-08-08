@@ -1,13 +1,11 @@
 #!/usr/bin/env python3
 
 import argparse
-import glob
 import os
 import re
 import shlex
 import subprocess
 import sys
-import tempfile
 import videoutilities as vu
 
 
@@ -35,14 +33,7 @@ def mux_matroska(settings, group):
     cmd = '"{0}" -o "{1}"'.format(settings["mkvmerge"], out_name)
 
     if settings['vid_in']:
-        settings['script_in'] = 'vloader.vpy'
-        vload_str = "import vapoursynth as vs\nc = vs.get_core()\nv_in = c.lsmas.LWLibavSource(src_vid)\nv_in.set_output()"
-        vload = tempfile.NamedTemporaryFile('w+', delete=False)
-        vload.write(vload_str)
-        vload.close()
-        settings['script_in'] = vu.fix_windows_paths(vload.name)
-        finfo = vu.get_vid_info(settings)
-        os.remove(vload.name)
+        finfo = vu.get_arbitrary_vid_info(settings)
         res = '{}x{}'.format(finfo['Width'], finfo['Height'])
         cmd += video_track_args(settings, res, type)
     if settings['aud_in']:
