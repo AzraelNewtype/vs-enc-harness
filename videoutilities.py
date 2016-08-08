@@ -3,6 +3,7 @@ import re
 import shlex
 import subprocess
 import sys
+import tempfile
 try:
     import yaml
 except ImportError:
@@ -48,6 +49,28 @@ def get_vid_info(settings):
         parts = line.split(": ")
         if len(parts) > 1:
             finfo[parts[0]] = parts[1]
+    return finfo
+    
+def get_arbitrary_vid_info(settings):
+    vload_str = "import vapoursynth as vs\nc = vs.get_core()\nv_in = c.lsmas.LWLibavSource(src_vid, cache=1)\nv_in.set_output()"
+    try:
+        old_script = settings['script_in']
+    except KeyError:
+        old_script = None
+    if os.sep in settings['vid_in']:
+        settings['vid_in'] = os.path.normpath(settings['vid_in'])
+    else:
+        settings['vid_in'] = os.path.abspath(settings['vid_in'])
+    vload = tempfile.NamedTemporaryFile('w+', delete=False)
+    vload.write(vload_str)
+    vload.close()
+    if os.name == 'nt':
+        settings['script_in'] = fix_windows_paths(vload.name)
+    else:
+        settings['script_in'] = vload.name
+    finfo = get_vid_info(settings)
+    os.remove(vload.name)
+    settings['script_in'] = old_script
     return finfo
 
 def fix_windows_paths(path_in):
