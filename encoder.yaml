@@ -6,6 +6,7 @@ Global:
     x264_extra_params: --preset veryfast --subme 1 --tune fastdecode
     mkvmerge: C:/Program Files/MKVtoolnix/mkvmerge.exe
     mkvextract: C:/Program Files/MKVtoolnix/mkvextract.exe
+    tsmuxer: C:/enc_tools/tsmuxer.exe
 Series:
     Default:
         lossless_depth_in: 10
