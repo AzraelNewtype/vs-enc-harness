@@ -202,12 +202,12 @@ if __name__ == "__main__":
     parser.add_argument('-d', '--directory', help='Directory to write output to')
     parser.add_argument('-p', '--prefix', help="Override output filename prefix")
     parser.add_argument('-c', '--chapters', help="Chapters file to mux")
-    parser.add_argument('-s', '--script', dest="script", help="Filename of subtitles to mux")
+    #parser.add_argument('-s', '--script', dest="script", help="Filename of subtitles to mux")
     parser.add_argument('-V', '--release-version', dest="ver", help="Release version number")
     parser.add_argument('--version', action='version', version='0.00000000001')
     parser.add_argument('--pretend', action='store_true', default=False)
     args = parser.parse_args(namespace=Opts)
-
+    
     #Grab the settings from the yaml based on input
     settings = vu.load_settings(Opts.series)
     
