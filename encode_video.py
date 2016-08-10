@@ -51,19 +51,6 @@ def encode_video(settings):
         vsp.stdout.close()
         enc.communicate()
 
-    
-
-    
-def split_and_blind_call(cmd, is_python=False, is_shell=False):
-    if is_shell:
-        cmd = cmd.replace('/','\\\\')
-    args = shlex.split(cmd)
-    sys.exit(' '.join(args))
-    if is_python:
-        args.insert(0, sys.executable)
-    f = subprocess.Popen(args, shell=is_shell)
-    f.wait()
-
 
 if __name__ == "__main__":
     # Build the menu.
