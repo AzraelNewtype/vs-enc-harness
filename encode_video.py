@@ -30,11 +30,14 @@ def encode_video(settings):
     if settings['subs']:
         pipe_cmd += ' -a "subtitles={0}"'.format(settings['subs'])
     pipe_cmd += ' {0} -'.format(settings['script_in'])
-    
-    if settings[type + '_depth_out'] == 8:
+    # Better safe than sorry; use 8-bit if not specified
+    try:
+        if settings[type + '_depth_out'] == 8:
+            encoder = settings['x264_8']
+        else:
+            encoder = settings['x264_10']
+    except KeyError:
         encoder = settings['x264_8']
-    else:
-        encoder = settings['x264_10']
     enc_opts = settings[type + '_opts'].strip()
     frame_info = vu.get_vid_info(settings)
     enc_cmd = "{0} {1} --demuxer y4m - -o {2} --frames {3}".format(
