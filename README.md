@@ -50,7 +50,7 @@ Most, if not all of these are optional. They should all be, but I'm not positive
 The `Fonts:` section under a series is for font files to attach to matroska. If you are a fansubber who uses non-standard
 fonts over and over, this is a good way to add them without thinking more than once.
 
-$## encode_video.py
+## encode_video.py
 
 links vspipe to x264, and can handle some complex script arguments for variant encodes for you.
 See **out-example.vpy** (which isn't yet committed, because I'm dumb) for an example of how that can be useful.
