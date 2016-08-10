@@ -45,6 +45,7 @@ Most, if not all of these are optional. They should all be, but I'm not positive
 * `*_requires_subs`: Tells `encode_video.py` to halt immediately if `-s` is not set for the specified *type*.
 * `*_prefix`: Adjusts the text set in `[]` at the front of the filename. This is actually probably required? Can be overriden at CLI though
 * `*_suffix`: Adjusts the text after the episode number and version indicator (if any) of the filename
+* `*_opts`: A list of command line options for x264. If you just put `>` on the first line, you can use multiple lines for these options.
 * `full_name`: Full name of whatever you're dealing with. The only option that does not vary by *encode type*.
 
 The `Fonts:` section under a series is for font files to attach to matroska. If you are a fansubber who uses non-standard
@@ -52,8 +53,11 @@ fonts over and over, this is a good way to add them without thinking more than o
 
 ## encode_video.py
 
-links vspipe to x264, and can handle some complex script arguments for variant encodes for you.
-See **out-example.vpy** (which isn't yet committed, because I'm dumb) for an example of how that can be useful.
+links vspipe to x264, and can handle some complex script arguments for variant encodes for you. See **example-output.vpy**
+for an example of how that can be useful. The general concept of it is that you have already performed some heavy lifting
+rendered to a lossless video, and you use that as your `--video-in` here. You can of course render that video by creating
+a lossless type in the configuration. Its type name will be passed to the script, but it won't affect anything if you
+don't consume it manually.
 
 All of the optional arguments have fairly reasonable default values if not set, and for the cases where the configuration
 yaml dictates that they should not be optional (this is user configurable) the script will boot you out before hitting the
