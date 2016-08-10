@@ -9,11 +9,8 @@ Global:
     tsmuxer: C:/enc_tools/tsmuxer.exe
 Series:
     Default:
-        lossless_depth_in: 10
         lossless_depth_out: 10
-        hd_depth_in: 10
         hd_depth_out: 10
-        sd_depth_in: 8
         sd_depth_out: 8
         wr_prefix: zyuoh
         hd_prefix: THISFILEHASNOSUBS
@@ -35,6 +32,7 @@ Series:
         sd_audio_lang: jpn
         wr_requires_source: yes
         wr_prefix: WorkRaw
+        wr_depth_out: 8
         hd_prefix: THISFILEHASNOSUBS
         sd_prefix: Over-Time
         sd_suffix: SD
