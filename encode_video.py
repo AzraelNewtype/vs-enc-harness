@@ -17,11 +17,6 @@ class Opts(object):
 def display_windows_paths(cmd_in):
     return re.sub('/', r'\\', cmd_in)
 
-    
-# c:\enc_tools\vspipe64.exe -i -a type=hd -a "src_vid=c:\\users\\chris\\documents\\gobus\\test_lossless.mp4" c:\\users\\chris\\documents\\gobus\\test-out.vpy -
-
-#py -3 encode_video.py zyuoh "c:\users\chris\documents\gobus\test_lossless.mp4" "c:\users\chris\documents\gobus\test-out.vpy" hd
-
 def encode_video(settings):
     type = settings['type']
     pipe_cmd = "{0} -y -a 'type={1}'".format(settings['vspipe'], type)
