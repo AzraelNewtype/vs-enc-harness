@@ -95,3 +95,6 @@ def get_arbitrary_vid_info(settings):
 def fix_windows_paths(path_in):
     if path_in:
         return path_in.replace('\\', '/')
+
+def display_windows_paths(cmd_in):
+    return cmd_in.replace('/', '\\')
