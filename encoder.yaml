@@ -5,7 +5,7 @@ Global:
     l-smash_bin_path: C:/enc_tools/l-smash-2.10.0-rev1366-d5c54a9-x86_64
     mkvmerge: C:/Program Files/MKVtoolnix/mkvmerge.exe
     mkvextract: C:/Program Files/MKVtoolnix/mkvextract.exe
-    tsmuxer: C:/enc_tools/tsmuxer.exe
+    tsmuxer: C:/enc_tools/tsmuxer_2.6.12/tsmuxer.exe
 Series:
     Default:
         lossless_depth_out: 10
