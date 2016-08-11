@@ -1,5 +1,4 @@
 import os
-import re
 import shlex
 import subprocess
 import sys
@@ -24,16 +23,17 @@ def load_settings(series):
         with open(yaml_loc) as y:
             all_settings = yaml.load(y)
     except IOError:
-        sys.exit("Cannot load encoder.yaml, cannot continue.")
+        print("Cannot load encoder.yaml, cannot continue.", file=sys.stderr)
+        raise
 
     settings = all_settings['Global']
     try:
         settings.update(all_settings['Series'][series])
     except KeyError:
-        print('No entry for series "{0}" in encoder.yaml, the available options are:'.format(series))
-        for series in all_settings['Series']:
-            print(series)
-        raise SystemExit
+        err_str_1 = 'No entry for series "{0}" in encoder.yaml, the available options are: '.format(series)
+        err_str_2 = ', '.join(all_settings['Series'])
+        print(err_str_1+err_str_2, file=sys.stderr)
+        raise 
 
     return settings
     
@@ -45,7 +45,8 @@ def load_global_settings():
         with open(yaml_loc) as y:
             all_settings = yaml.load(y)
     except IOError:
-        sys.exit("Cannot load encoder.yaml, cannot continue.")
+        print("Cannot load encoder.yaml, cannot continue.", file=sys.stderr)
+        raise
         
     return all_settings['Global']
     
@@ -93,4 +94,4 @@ def get_arbitrary_vid_info(settings):
     
 def fix_windows_paths(path_in):
     if path_in:
-        return re.sub(r'\\', '/', path_in)
+        return path_in.replace('\\', '/')
