@@ -3,7 +3,6 @@
 import argparse
 import glob
 import os
-import re
 import shlex
 import subprocess
 import sys
@@ -14,9 +13,6 @@ class Opts(object):
     pass
 
           
-def display_windows_paths(cmd_in):
-    return re.sub('/', r'\\', cmd_in)
-
 def encode_video(settings):
     type = settings['type']
     pipe_cmd = "{0} -y -a 'type={1}'".format(settings['vspipe'], type)
@@ -42,8 +38,8 @@ def encode_video(settings):
     if settings['pretend']:
         print('=== Generated Command ===')
         print('{} | {}'.format(
-            display_windows_paths(pipe_cmd), 
-            display_windows_paths(enc_cmd)))
+            vu.display_windows_paths(pipe_cmd), 
+            vu.display_windows_paths(enc_cmd)))
     else:
         vsp = subprocess.Popen(shlex.split(pipe_cmd), stdout=subprocess.PIPE, 
                                stderr=subprocess.DEVNULL)
