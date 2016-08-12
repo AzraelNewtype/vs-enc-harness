@@ -40,7 +40,7 @@ def load_settings(series):
     
 def load_global_settings():
     try:
-        script_dir = os.path.dirname(os.path.realpath(sys.argv[0]))
+        script_dir = os.path.dirname(os.path.realpath(__file__))
         yaml_loc = os.path.join(script_dir,"encoder.yaml")
         with open(yaml_loc) as y:
             all_settings = yaml.load(y)
