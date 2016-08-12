@@ -107,7 +107,7 @@ if __name__ == "__main__":
     parser.add_argument('-V', '--release-version', dest="ver", help="Release version number")
     parser.add_argument('--tags', help="Tags file for video trickery.")
     parser.add_argument('--version', action='version', version='0.00000000001')
-    parser.add_argument('--pretend', action='store_true', default=False)
+    parser.add_argument('--pretend', action='store_true', default=False, help="Display command, don't run it")
     args = parser.parse_args(namespace=Opts)
 
     #Grab the settings from the yaml based on input
