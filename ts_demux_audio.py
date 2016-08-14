@@ -31,10 +31,9 @@ class TSStream(object):
         
 def demux_aac(ts):
     settings = vu.load_global_settings()
-    tsm_path = settings['tsmuxer']
-
-    meta_s = generate_meta(ts, tsm_path)
-    #sys.exit(meta_s)
+    tsm_path = settings['tsmuxer']  
+    meta_s = generate_meta(os.path.realpath(ts), tsm_path)
+    
     f = tempfile.NamedTemporaryFile(delete=False)
     try:
         f.write(bytearray(meta_s, sys.getfilesystemencoding()))
