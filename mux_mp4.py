@@ -202,7 +202,6 @@ if __name__ == "__main__":
     parser.add_argument('-d', '--directory', help='Directory to write output to')
     parser.add_argument('-p', '--prefix', help="Override output filename prefix")
     parser.add_argument('-c', '--chapters', help="Chapters file to mux")
-    #parser.add_argument('-s', '--script', dest="script", help="Filename of subtitles to mux")
     parser.add_argument('-V', '--release-version', dest="ver", help="Release version number")
     parser.add_argument('--version', action='version', version='0.00000000001')
     parser.add_argument('--pretend', action='store_true', default=False)
@@ -226,13 +225,11 @@ if __name__ == "__main__":
     if os.name == 'posix':
         settings['chapters'] = Opts.chapters
         settings['directory'] = Opts.directory
-        settings['script'] = Opts.script
         settings['vid_in'] = Opts.video_in
         settings['aud_in'] = Opts.audio_in
     elif os.name == 'nt':
         settings['chapters'] = vu.fix_windows_paths(Opts.chapters)
         settings['directory'] = vu.fix_windows_paths(Opts.directory)
-        settings['script'] = vu.fix_windows_paths(Opts.script)
         settings['aud_in'] = vu.fix_windows_paths(Opts.audio_in)
         settings['vid_in'] = vu.fix_windows_paths(Opts.video_in)
 
@@ -248,10 +245,6 @@ if __name__ == "__main__":
     else:
         epnum = None
     settings['epnum'] = epnum
-    if not Opts.script:
-        settings["script"] = ""
-    else:
-        settings["script"] = Opts.script
     
     #vu.preprin(settings)
     
