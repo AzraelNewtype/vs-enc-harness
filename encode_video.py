@@ -15,7 +15,7 @@ class Opts(object):
           
 def encode_video(settings):
     type = settings['type']
-    pipe_cmd = "{0} -y -a 'type={1}'".format(settings['vspipe'], type)
+    pipe_cmd = '{0} -y -a "etype={1}"'.format(settings['vspipe'], type)
     if settings['vid_in']:
         pipe_cmd += ' -a "src_vid={}"'.format(settings['vid_in'])
     if settings['subs']:

@@ -53,7 +53,7 @@ def load_global_settings():
     
 def get_vid_info(settings):
     type = settings['type']
-    info_cmd =  '{0} -i -a "type={1}" -a "src_vid={2}" {3} -'.format(
+    info_cmd =  '{0} -i -a "etype={1}" -a "src_vid={2}" {3} -'.format(
         settings['vspipe'], type, settings['vid_in'], settings['script_in'])
     iargs = shlex.split(info_cmd)
     finfo_raw = subprocess.check_output(iargs)
